@@ -3,18 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StarPack</title>
-
-    <!-- Favicon 代码开始 -->
-  <link rel="icon" href="starpack.ico" type="image/x-icon">
+    <title>StarPack - 中国企业进军美国市场</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="starpack.ico" type="image/x-icon">
     
     <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
         /* 导航栏样式 */
         .navbar {
-            background-color: #003366; /* 深蓝色背景，常见于企业网站 */
-            padding: 15px 0;
-            font-family: Arial, sans-serif;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: #003366;
+            padding: 12px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         
         .nav-container {
@@ -23,24 +39,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 20px;
         }
         
-        .logo {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
+        .logo img {
+            height: 40px;
+            width: auto;
         }
         
         .nav-menu {
             display: flex;
             list-style: none;
-            margin: 0;
-            padding: 0;
         }
         
         .nav-item {
-            position: relative;
             margin: 0 15px;
+            position: relative;
         }
         
         .nav-link {
@@ -54,17 +68,81 @@
         }
         
         .nav-link:hover {
-            color: #4da6ff; /* 鼠标悬停时的颜色 */
+            color: #4da6ff;
         }
         
-        /* 下拉箭头样式 */
         .dropdown-arrow::after {
             content: ' ▼';
             font-size: 12px;
         }
         
-        /* 响应式设计 - 移动设备适配 */
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* 主内容区域样式 */
+        .hero {
+            background: linear-gradient(135deg, #0066cc 0%, #003366 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .content-section h2 {
+            color: #0066cc;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #0066cc;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #0052a3;
+        }
+        
+        /* 响应式设计 */
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
             .nav-menu {
                 flex-direction: column;
                 position: absolute;
@@ -73,14 +151,30 @@
                 width: 100%;
                 background-color: #003366;
                 display: none;
+                padding: 20px 0;
             }
             
             .nav-item {
-                margin: 0;
+                margin: 10px 0;
                 text-align: center;
-                padding: 10px 0;
-                border-top: 1px solid rgba(255,255,255,0.1);
             }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
         }
     </style>
 </head>
@@ -88,7 +182,10 @@
     <!-- 导航栏 -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">COMPANY LOGO</div>
+            <div class="logo">
+                <img src="logo.png" alt="StarPack Logo">
+            </div>
+            <div class="menu-toggle">☰</div>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
                 <li class="nav-item"><a href="#" class="nav-link dropdown-arrow">BUSINESSES</a></li>
@@ -100,31 +197,37 @@
         </div>
     </nav>
 
+    <!-- 主内容区域 -->
+    <section class="hero">
+        <h1>中国企业进军美国市场</h1>
+        <p>专业的市场进入策略与数字化解决方案，助力中国品牌在美国市场取得成功</p>
+        <a href="#contact" class="btn">联系我们</a>
+    </section>
+
     <div class="container">
-        <h1>Hello World from AWS!</h1>
-        <p>This is our first custom website.</p>
-        <button onclick="showAlert()">Click Me!</button>
+        <div class="content-section">
+            <h2>欢迎来到 StarPack</h2>
+            <p>我们专注于帮助中国企业在美国市场建立强大的数字存在感和品牌影响力。</p>
+            <p>This is our first custom website.</p>
+            <button onclick="showAlert()" class="btn">Click Me!</button>
+        </div>
     </div>
+
+    <footer>
+        <p>&copy; 2025 StarPack. 版权所有。</p>
+    </footer>
 
     <script>
         function showAlert() {
             alert('Hello! This is JavaScript working on AWS!');
         }
         
-        // 简单的移动端菜单切换功能
+        // 移动端菜单切换功能
         document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.createElement('div');
-            menuToggle.className = 'menu-toggle';
-            menuToggle.innerHTML = '☰';
-            menuToggle.style.color = 'white';
-            menuToggle.style.fontSize = '24px';
-            menuToggle.style.cursor = 'pointer';
-            menuToggle.style.display = 'none';
-            
-            document.querySelector('.nav-container').appendChild(menuToggle);
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
             
             menuToggle.addEventListener('click', function() {
-                const navMenu = document.querySelector('.nav-menu');
                 if (navMenu.style.display === 'flex') {
                     navMenu.style.display = 'none';
                 } else {
